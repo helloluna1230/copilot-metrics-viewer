@@ -1,0 +1,52 @@
+[
+  {
+    "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+    "value": "",
+    "slotSetting": false
+  },
+  {
+    "name": "DOCKER_REGISTRY_SERVER_URL",
+    "value": "https://yutedemo.azurecr.io",
+    "slotSetting": false
+  },
+  {
+    "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+    "value": "yutedemo",
+    "slotSetting": false
+  },
+  {
+    "name": "NODE_ENV",
+    "value": "production",
+    "slotSetting": false
+  },
+  {
+    "name": "VUE_APP_GITHUB_ORG",
+    "value": "LunaDemo",
+    "slotSetting": false
+  },
+  {
+    "name": "VUE_APP_GITHUB_TOKEN",
+    "value": "",
+    "slotSetting": false
+  },
+  {
+    "name": "VUE_APP_MOCKED_DATA",
+    "value": "false",
+    "slotSetting": false
+  },
+  {
+    "name": "VUE_APP_SCOPE",
+    "value": "organization",
+    "slotSetting": false
+  },
+  {
+    "name": "VUE_APP_SHOW_MULTIPLE_TEAMS",
+    "value": "true",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+    "value": "false",
+    "slotSetting": false
+  }
+]
