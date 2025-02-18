@@ -1,6 +1,4 @@
-**/.env
 **/.env.local
-.env*
 .dockerignore
 **/node_modules/
 api/public
@@ -24,3 +22,5 @@ infra/
 /test-results-docker/
 test-results-docker-ent/
 test-results-docker-org/
+prod.env
+.env

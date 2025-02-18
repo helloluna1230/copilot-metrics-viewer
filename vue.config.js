@@ -5,6 +5,9 @@ process.env.VUE_APP_VERSION = version;
 
 module.exports = defineConfig({
   transpileDependencies: true,
+  publicPath: './',
+  outputDir:'dist',
+  //assetsDir:'static',
 
   pluginOptions: {
     vuetify: {

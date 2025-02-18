@@ -5,24 +5,26 @@ PROPS.forEach(prop => {
 	const propName = `VUE_APP_${prop}`;
 	if (process.env.NODE_ENV === "production") {
 		env[propName] = (window as any)["_ENV_"][propName];
+		
+		//env[propName] = process.env[propName];
 	}
 	else {
 		env[propName] = process.env[propName];
 	}
 });
 
+
 const VALID_SCOPE = ['organization', 'enterprise'];
 
 let scopeType;
 if (VALID_SCOPE.includes(env.VUE_APP_SCOPE)) {
-	scopeType = env.VUE_APP_SCOPE as 'enterprise' | 'organization'
+	scopeType = env.VUE_APP_SCOPE as 'enterprise' | 'organization';
 }
 
 let apiUrl: string;
 const githubOrgName = env.VUE_APP_GITHUB_ORG;
 const githubEntName = env.VUE_APP_GITHUB_ENT;
 const baseApi = env.VUE_APP_GITHUB_API;
-
 
 let scopeName: string;
 if (scopeType === 'organization') {
@@ -34,7 +36,7 @@ else if (scopeType === 'enterprise') {
 	apiUrl = `${baseApi || 'https://api.github.com'}/enterprises/${githubEntName}`;
 }
 else {
-	throw new Error(`Invalid VUE_APP_SCOPE value: ${env.VUE_APP_SCOPE}. Valid values: ${VALID_SCOPE.join(', ')}`)
+	throw new Error(`Invalid VUE_APP_SCOPE value: ${env.VUE_APP_SCOPE}. Valid values: ${VALID_SCOPE.join(', ')}`);
 }
 
 const config: Config = {
@@ -52,7 +54,8 @@ const config: Config = {
 		baseApi
 	},
 	showMultipleTeams: env.VUE_APP_SHOW_MULTIPLE_TEAMS === "true"
-}
+};
+
 if (!config.mockedData && !config.github.token && !config.github.baseApi) {
 	throw new Error("VUE_APP_GITHUB_TOKEN environment variable must be set or calls have to be proxied by the api layer.");
 }
@@ -66,32 +69,12 @@ interface Config {
 		name: string;
 	};
 	github: {
-		/** The GitHub organization name. */
-		org: string; 
-		/** The GitHub enterprise name. */
+		org: string;
 		ent: string;
-		/** The GitHub team name. */
 		team: string;
-		/** 
-		 * The GitHub token to authenticate requests. 
-		 * 
-		 * CAUTION: Do not expose the token in the client-side code.
-		 * */
 		token: string;
-		/**
-		 * The GitHub API URL, different for GitHub Organization and GitHub Enterprise.
-		 * 
-		 * This is the base URL for the GitHub API. It can be customized to use GitHub Enterprise or GitHub.com.
-		 * When using the proxy, it used `env.VUE_APP_GITHUB_API` to set the base URL, so that requests are sent to the proxy before being forwarded to the GitHub API.
-		 * 
-		 */
 		apiUrl: string;
-		/**
-		 * The base URL for the GitHub API. When set to `/api/github` it sends data via proxy to the GitHub API to hide the token.
-		 * 
-		 * default: https://api.github.com
-		 */
 		baseApi: string;
-	},
+	};
 	showMultipleTeams: boolean;
 }
